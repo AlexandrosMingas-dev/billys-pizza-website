@@ -3,7 +3,7 @@
 
   var LANG_KEY = "billys-lang-v2";
   var PAGES = ["home", "menu", "visit"];
-  var MENU_CATS = ["pizza", "calzone", "peinirli", "baked", "breads"];
+  var MENU_CATS = ["pizza", "calzone", "peinirli", "baked", "breads", "salads", "drinks"];
 
   var currentLang = "el";
   try {
@@ -101,53 +101,75 @@
     else openDrawer();
   }
 
-  var slides = document.querySelectorAll(".slide");
-  var captions = document.querySelectorAll(".slide-caption");
-  var dots = document.querySelectorAll(".dot");
-  var slideIndex = 0;
-  var slideTimer;
+  function initSlider(root) {
+    if (!root) return;
+    var slides = root.querySelectorAll(":scope > .slide");
+    var captions = root.querySelectorAll(".slide-caption");
+    var dots = root.querySelectorAll(".slider-dots button");
+    var prev = root.querySelector(".slider-prev");
+    var next = root.querySelector(".slider-next");
+    var index = 0;
+    var timer;
 
-  function goToSlide(n) {
-    if (!slides.length) return;
-    slideIndex = (n + slides.length) % slides.length;
-    slides.forEach(function (slide, i) {
-      var on = i === slideIndex;
-      slide.classList.toggle("is-active", on);
-      slide.setAttribute("aria-hidden", on ? "false" : "true");
-    });
-    captions.forEach(function (caption, i) {
-      caption.classList.toggle("is-active", i === slideIndex);
-    });
+    function goTo(n) {
+      if (!slides.length) return;
+      index = (n + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var on = i === index;
+        slide.classList.toggle("is-active", on);
+        slide.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+      captions.forEach(function (caption, i) {
+        caption.classList.toggle("is-active", i === index);
+      });
+      dots.forEach(function (dot, i) {
+        var on = i === index;
+        dot.classList.toggle("is-active", on);
+        if (on) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    }
+
+    function start() {
+      stop();
+      timer = setInterval(function () {
+        goTo(index + 1);
+      }, 6000);
+    }
+
+    function stop() {
+      if (timer) clearInterval(timer);
+    }
+
+    if (prev) {
+      prev.addEventListener("click", function () {
+        goTo(index - 1);
+        start();
+      });
+    }
+    if (next) {
+      next.addEventListener("click", function () {
+        goTo(index + 1);
+        start();
+      });
+    }
     dots.forEach(function (dot, i) {
-      var on = i === slideIndex;
-      dot.classList.toggle("is-active", on);
-      if (on) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
+      dot.addEventListener("click", function () {
+        goTo(i);
+        start();
+      });
     });
-  }
-
-  function nextSlide() {
-    goToSlide(slideIndex + 1);
-  }
-
-  function prevSlide() {
-    goToSlide(slideIndex - 1);
-  }
-
-  function startSlider() {
-    stopSlider();
-    slideTimer = setInterval(nextSlide, 6000);
-  }
-
-  function stopSlider() {
-    if (slideTimer) clearInterval(slideTimer);
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    goTo(0);
+    start();
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     setLang(currentLang);
     applyHash(true);
-    goToSlide(0);
-    startSlider();
+    initSlider(document.getElementById("slider"));
+    initSlider(document.getElementById("welcome-slider"));
 
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
@@ -178,33 +200,6 @@
       if (e.key === "Escape") closeDrawer();
     });
 
-    var prev = document.getElementById("slider-prev");
-    var next = document.getElementById("slider-next");
-    if (prev) {
-      prev.addEventListener("click", function () {
-        prevSlide();
-        startSlider();
-      });
-    }
-    if (next) {
-      next.addEventListener("click", function () {
-        nextSlide();
-        startSlider();
-      });
-    }
-
-    dots.forEach(function (dot, i) {
-      dot.addEventListener("click", function () {
-        goToSlide(i);
-        startSlider();
-      });
-    });
-
-    var slider = document.getElementById("slider");
-    if (slider) {
-      slider.addEventListener("mouseenter", stopSlider);
-      slider.addEventListener("mouseleave", startSlider);
-    }
   });
 
   window.addEventListener("hashchange", function () {

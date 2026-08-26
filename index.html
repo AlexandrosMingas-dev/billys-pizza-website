@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
@@ -256,8 +256,25 @@
                 <a class="btn btn-outline" href="tel:+302842026074">+30 28420 26074</a>
               </div>
             </div>
-            <div class="photo-frame">
-              <img src="photos/visits.jpg" alt="" />
+            <div class="photo-frame" id="welcome-slider" aria-roledescription="carousel">
+              <div class="slide is-active">
+                <img src="photos/visits.jpg" alt="Billy's Pizza, Ierapetra" />
+              </div>
+              <div class="slide" aria-hidden="true">
+                <img src="photos/hero.jpg" alt="" />
+              </div>
+              <button type="button" class="slider-btn slider-prev" id="welcome-prev">
+                <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
+                <svg aria-hidden="true"><use href="#i-left"></use></svg>
+              </button>
+              <button type="button" class="slider-btn slider-next" id="welcome-next">
+                <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
+                <svg aria-hidden="true"><use href="#i-right"></use></svg>
+              </button>
+              <div class="slider-dots">
+                <button type="button" class="dot is-active" aria-label="1" aria-current="true"></button>
+                <button type="button" class="dot" aria-label="2"></button>
+              </div>
             </div>
           </div>
         </section>
@@ -427,8 +444,8 @@
         <div class="page-hero">
           <h1><span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span></h1>
           <p>
-            <span data-lang="el">Pizza · Καλτσόνε · Πεϊνιρλί · Ψωμάκια φούρνου</span>
-            <span data-lang="en">Pizza · Calzone · Peinirli · Baked breads</span>
+            <span data-lang="el">Pizza · Καλτσόνε · Πεϊνιρλί · Ψωμάκια φούρνου · Σαλάτες · Ποτά</span>
+            <span data-lang="en">Pizza · Calzone · Peinirli · Baked breads · Salads · Drinks</span>
           </p>
         </div>
         <div class="wrap wrap-narrow menu-page">
@@ -462,6 +479,18 @@
                 <a href="#breads">
                   <span data-lang="el">Ψωμιά</span>
                   <span data-lang="en">Garlic &amp; cheese breads</span>
+                </a>
+              </li>
+              <li>
+                <a href="#salads">
+                  <span data-lang="el">Σαλάτες</span>
+                  <span data-lang="en">Salads</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drinks">
+                  <span data-lang="el">Ποτά</span>
+                  <span data-lang="en">Drinks</span>
                 </a>
               </li>
             </ul>
@@ -806,6 +835,132 @@
               </li>
             </ol>
           </section>
+
+          <section class="menu-section" id="salads">
+            <h2><span data-lang="el">Σαλάτες</span><span data-lang="en">Salads</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Καίσαρα</span><span data-lang="en">Caesar</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Μαρούλι, κρουτόν, ντοματίνια, κοτόπουλο, σως caesar</span><span data-lang="en">Lettuce, croutons, tomatoes, chicken, Caesar sauce</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Σεφ</span><span data-lang="en">Chef</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Μαρούλι, ντομάτα, αγγούρι, τυρί, ζαμπόν, σως</span><span data-lang="en">Lettuce, tomato, cucumber, cheese, ham, sauce</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">3.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Τονοσαλάτα</span><span data-lang="en">Tuna salad</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τόνο, μαρούλι, ντομάτα, κρεμμύδι, σως</span><span data-lang="en">Tuna, lettuce, tomato, onion, sauce</span></p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="menu-section" id="drinks">
+            <h2><span data-lang="el">Ποτά</span><span data-lang="en">Drinks</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <h3><span data-lang="el">Αναψυκτικά</span><span data-lang="en">Refreshments</span></h3>
+                  <ul class="menu-sizes">
+                    <li>
+                      <span>330ml</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€1.20</span>
+                    </li>
+                    <li>
+                      <span>1L</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€2.50</span>
+                    </li>
+                    <li>
+                      <span>1.5L</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€3.00</span>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Χυμός Amita</span><span data-lang="en">Amita Juice</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€1.00</span>
+                  </div>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">3.</span>
+                <div class="menu-item-body">
+                  <h3><span data-lang="el">Νερό</span><span data-lang="en">Water</span></h3>
+                  <ul class="menu-sizes">
+                    <li>
+                      <span>500ml</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€0.70</span>
+                    </li>
+                    <li>
+                      <span>1L</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€1.00</span>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">4.</span>
+                <div class="menu-item-body">
+                  <h3><span data-lang="el">Μπύρες</span><span data-lang="en">Beers</span></h3>
+                  <ul class="menu-sizes">
+                    <li>
+                      <span>330ml</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€2.00</span>
+                    </li>
+                    <li>
+                      <span>500ml</span>
+                      <span class="dots" aria-hidden="true"></span>
+                      <span class="price">€3.50</span>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">5.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Ρετσίνα</span><span data-lang="en">Retsina</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€3.50</span>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </section>
         </div>
       </section>
 
@@ -979,6 +1134,6 @@ Saturday & Sunday: Closed or call to confirm</span>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
   </body>
 </html>
