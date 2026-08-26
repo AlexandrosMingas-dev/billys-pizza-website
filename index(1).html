@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Billy's Pizza · Ιεράπετρα</title>
+    <meta
+      name="description"
+      content="Η γειτονική πιτσαρία στη Θεοτοκοπούλου 5, Ιεράπετρα. Πίτσα 30cm, καλτσόνε, πεϊνιρλί και ψωμάκια φούρνου. Καλέστε +30 28420 26074."
+    />
+    <link rel="icon" href="photos/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+      </symbol>
+      <symbol id="i-pizza" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 11h.01" />
+        <path d="M11 15h.01" />
+        <path d="M16 16h.01" />
+        <path d="m2 16 20 6-6-20A20 20 0 0 0 2 16" />
+        <path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4" />
+      </symbol>
+      <symbol id="i-bike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18.5" cy="17.5" r="3.5" />
+        <circle cx="5.5" cy="17.5" r="3.5" />
+        <circle cx="15" cy="5" r="1" />
+        <path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+      </symbol>
+      <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6" />
+      </symbol>
+      <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6" />
+      </symbol>
+      <symbol id="i-dots" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="5" r="1.85" />
+        <circle cx="12" cy="12" r="1.85" />
+        <circle cx="12" cy="19" r="1.85" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+        <path d="M18 6 6 18M6 6l12 12" />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="#home" class="logo" data-nav="home" aria-label="Billy's Pizza">
+          <img src="photos/logo.png" alt="Billy's Pizza" />
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main">
+          <a href="#home" class="nav-link is-active" data-nav="home">
+            <span data-lang="el">Αρχική</span><span data-lang="en">Home</span>
+          </a>
+          <a href="#menu" class="nav-link" data-nav="menu">
+            <span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span>
+          </a>
+          <a href="#visit" class="nav-link" data-nav="visit">
+            <span data-lang="el">Επίσκεψη</span><span data-lang="en">Visit</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+            <button type="button" data-lang-btn="el" class="is-active" aria-pressed="true">ΕΛ</button>
+          </div>
+          <a class="btn btn-gold header-call" href="tel:+302842026074">
+            <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+            <span data-lang="el">Καλέστε μας</span><span data-lang="en">Call us</span>
+          </a>
+          <button
+            type="button"
+            class="menu-toggle"
+            id="menu-btn"
+            aria-expanded="false"
+            aria-controls="drawer"
+          >
+            <span class="sr-only"><span data-lang="el">Άνοιγμα μενού</span><span data-lang="en">Open menu</span></span>
+            <svg aria-hidden="true"><use href="#i-dots"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="drawer-overlay" id="overlay" hidden></div>
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-top">
+        <a href="#home" class="logo drawer-logo" data-nav="home">
+          <img src="photos/logo.png" alt="Billy's Pizza" />
+        </a>
+        <button type="button" class="drawer-close" id="drawer-close">
+          <span class="sr-only"><span data-lang="el">Κλείσιμο</span><span data-lang="en">Close</span></span>
+          <svg aria-hidden="true" width="20" height="20"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile">
+        <a href="#home" data-nav="home">
+          <span data-lang="el">Αρχική</span><span data-lang="en">Home</span>
+        </a>
+        <a href="#menu" data-nav="menu">
+          <span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span>
+        </a>
+        <a href="#visit" data-nav="visit">
+          <span data-lang="el">Επίσκεψη</span><span data-lang="en">Visit</span>
+        </a>
+      </nav>
+      <div class="drawer-footer">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang-btn="el" class="is-active" aria-pressed="true">ΕΛ</button>
+        </div>
+        <a class="btn btn-gold" href="tel:+302842026074">
+          <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+          <span data-lang="el">Καλέστε μας</span><span data-lang="en">Call us</span>
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="page is-active" id="home">
+        <section class="slider" id="slider" aria-roledescription="carousel">
+          <div class="slide is-active">
+            <img src="photos/turkey.jpg" alt="" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="photos/hamburger1.jpg" alt="" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="photos/margarita.jpg" alt="" />
+          </div>
+          <div class="slider-overlay"></div>
+          <div class="wrap slider-content">
+            <p class="eyebrow">
+              <span data-lang="el">Ιεράπετρα, Κρήτη</span>
+              <span data-lang="en">Ierapetra, Crete</span>
+            </p>
+            <h1>
+              <span class="sr-only">Billy's Pizza</span>
+              <span class="logo logo-lg">
+                <img src="photos/logo.png" alt="" />
+              </span>
+            </h1>
+            <div class="slide-caption is-active">
+              <p class="slider-title">
+                <span data-lang="el">Η γεύση που λατρεύεις</span>
+                <span data-lang="en">The taste you love</span>
+              </p>
+              <p class="slider-sub">
+                <span data-lang="el">Φρέσκα υλικά · Παραδοσιακές συνταγές</span>
+                <span data-lang="en">Fresh ingredients · Traditional recipes</span>
+              </p>
+            </div>
+            <div class="slide-caption">
+              <p class="slider-title">
+                <span data-lang="el">Ψωμάκια φούρνου</span>
+                <span data-lang="en">Baked breads</span>
+              </p>
+              <p class="slider-sub">
+                <span data-lang="el">Χάμπουργκερ, σπέσιαλ και άλλα</span>
+                <span data-lang="en">Hamburger, special, and more</span>
+              </p>
+            </div>
+            <div class="slide-caption">
+              <p class="slider-title">
+                <span data-lang="el">Καλώς ήρθατε στην Billy's</span>
+                <span data-lang="en">Welcome to Billy's</span>
+              </p>
+              <p class="slider-sub">
+                <span data-lang="el">Ιεράπετρα, Κρήτη</span>
+                <span data-lang="en">Ierapetra, Crete</span>
+              </p>
+            </div>
+            <div class="slider-actions">
+              <a class="btn btn-gold" href="#menu" data-nav="menu">
+                <span data-lang="el">Δείτε τον κατάλογο</span>
+                <span data-lang="en">View the menu</span>
+              </a>
+              <a class="btn btn-outline" href="tel:+302842026074">
+                <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+                <span data-lang="el">Καλέστε μας</span>
+                <span data-lang="en">Call us</span>
+              </a>
+              <a
+                class="btn btn-ghost"
+                href="https://www.google.com/maps/dir/?api=1&destination=Theotokopoulou+5%2C+Ierapetra%2C+Greece"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+                <span data-lang="el">Οδηγίες</span>
+                <span data-lang="en">Directions</span>
+              </a>
+            </div>
+          </div>
+          <button type="button" class="slider-btn slider-prev" id="slider-prev">
+            <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
+            <svg aria-hidden="true"><use href="#i-left"></use></svg>
+          </button>
+          <button type="button" class="slider-btn slider-next" id="slider-next">
+            <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
+            <svg aria-hidden="true"><use href="#i-right"></use></svg>
+          </button>
+          <div class="slider-dots">
+            <button type="button" class="dot is-active" aria-label="1" aria-current="true"></button>
+            <button type="button" class="dot" aria-label="2"></button>
+            <button type="button" class="dot" aria-label="3"></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap welcome-grid">
+            <div>
+              <p class="eyebrow">
+                <span data-lang="el">Καλώς ήρθατε</span>
+                <span data-lang="en">Welcome</span>
+              </p>
+              <h2 class="heading">
+                <span data-lang="el">Η Billy's Pizza στην</span>
+                <span data-lang="en">Billy's Pizza in</span>
+                <span class="accent">
+                  <span data-lang="el"> Ιεράπετρα</span>
+                  <span data-lang="en"> Ierapetra</span>
+                </span>
+              </h2>
+              <p class="body">
+                <span data-lang="el">Η Billy's Pizza ήρθε για να μείνει στον γαστρονομικό χάρτη της Ιεράπετρας. Η καλή πίτσα ξεκινάει από φρέσκα υλικά και τελειώνει με ένα χαμόγελο. Από την κλασική Μαργαρίτα μέχρι τις δικές μας πίτσες — delivery, takeaway ή επιτόπου.</span>
+                <span data-lang="en">Billy's Pizza is here to stay on Ierapetra's food map. Good pizza starts with fresh ingredients and ends with a satisfied smile. From classic Margarita to our own pies — delivery, takeaway, or at the table.</span>
+              </p>
+              <div class="welcome-actions">
+                <a class="btn btn-gold" href="#menu" data-nav="menu">
+                  <span data-lang="el">Δείτε τον κατάλογο</span>
+                  <span data-lang="en">View the menu</span>
+                </a>
+                <a class="btn btn-outline" href="tel:+302842026074">+30 28420 26074</a>
+              </div>
+            </div>
+            <div class="photo-frame">
+              <img src="photos/visits.jpg" alt="" />
+            </div>
+          </div>
+        </section>
+
+        <section class="features">
+          <div class="wrap features-inner">
+            <div class="feature">
+              <svg aria-hidden="true"><use href="#i-leaf"></use></svg>
+              <h3>
+                <span data-lang="el">Φρέσκα υλικά</span>
+                <span data-lang="en">Fresh ingredients</span>
+              </h3>
+              <p>
+                <span data-lang="el">Επιλεγμένα προϊόντα κάθε μέρα</span>
+                <span data-lang="en">Chosen produce, every day</span>
+              </p>
+            </div>
+            <div class="feature">
+              <svg aria-hidden="true"><use href="#i-pizza"></use></svg>
+              <h3>
+                <span data-lang="el">Ζύμη από την αρχή</span>
+                <span data-lang="en">Dough from scratch</span>
+              </h3>
+              <p>
+                <span data-lang="el">Παραδοσιακή συνταγή, καθημερινά</span>
+                <span data-lang="en">Traditional recipe, made daily</span>
+              </p>
+            </div>
+            <div class="feature">
+              <svg aria-hidden="true"><use href="#i-bike"></use></svg>
+              <h3>
+                <span data-lang="el">Delivery &amp; takeaway</span>
+                <span data-lang="en">Delivery &amp; takeaway</span>
+              </h3>
+              <p>
+                <span data-lang="el">Στο σπίτι σας ή για παραλαβή</span>
+                <span data-lang="en">To your door, or ready to collect</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap">
+            <div class="featured-head">
+              <div>
+                <p class="eyebrow">
+                  <span data-lang="el">Από τον φούρνο</span>
+                  <span data-lang="en">From the oven</span>
+                </p>
+                <h2 class="heading">
+                  <span data-lang="el">Οι αγαπημένες του Billy's, όταν πεινάσετε.</span>
+                  <span data-lang="en">House favourites, ready when you are.</span>
+                </h2>
+              </div>
+              <a class="btn btn-outline" href="#menu" data-nav="menu">
+                <span data-lang="el">Όλος ο κατάλογος</span>
+                <span data-lang="en">See the full menu</span>
+              </a>
+            </div>
+            <div class="cards">
+              <article class="card">
+                <img src="photos/margarita.jpg" alt="Margarita" />
+                <div class="card-body">
+                  <div class="card-row">
+                    <h3>Margarita</h3>
+                    <span class="price">€7.00</span>
+                  </div>
+                  <p class="ings">
+                    <span data-lang="el">Τυρί, σάλτσα</span>
+                    <span data-lang="en">Cheese, sauce</span>
+                  </p>
+                  <p class="badge">
+                    <span data-lang="el">Σπέσιαλ του μαγαζιού</span>
+                    <span data-lang="en">House special</span>
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <img src="photos/peinirli.jpg" alt="Peinirli" />
+                <div class="card-body">
+                  <div class="card-row">
+                    <h3>
+                      <span data-lang="el">Πεϊνιρλί</span>
+                      <span data-lang="en">Peinirli</span>
+                    </h3>
+                    <span class="price">€10.00</span>
+                  </div>
+                  <p class="ings">
+                    <span data-lang="el">Τυρί, γαλοπούλα, φρ. ντομάτα, πιπεριά</span>
+                    <span data-lang="en">Cheese, turkey, fresh tomato, pepper</span>
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <img src="photos/special1.jpg" alt="Special" />
+                <div class="card-body">
+                  <div class="card-row">
+                    <h3>
+                      <span data-lang="el">Σπέσιαλ</span>
+                      <span data-lang="en">Special</span>
+                    </h3>
+                    <span class="price">€10.00</span>
+                  </div>
+                  <p class="ings">
+                    <span data-lang="el">Τυρί, ζαμπόν, μπέικον, σαλάμι, μανιτάρια, πιπεριά</span>
+                    <span data-lang="en">Cheese, ham, bacon, salami, mushrooms, peppers</span>
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <img src="photos/hamburger1.jpg" alt="Hamburher" />
+                <div class="card-body">
+                  <div class="card-row">
+                    <h3>
+                      <span data-lang="el">Χάμπουργκερ</span>
+                      <span data-lang="en">Hamburher</span>
+                    </h3>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings">
+                    <span data-lang="el">Τυρί, μπιφτέκι, φρ. ντομάτα, μαγιονέζα</span>
+                    <span data-lang="en">Cheese, burger, fresh tomato, mayonnaise</span>
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-row">
+          <div class="wrap info-inner">
+            <div class="info-card">
+              <svg aria-hidden="true"><use href="#i-clock"></use></svg>
+              <h3><span data-lang="el">Ωράριο</span><span data-lang="en">Hours</span></h3>
+              <p>
+                <span data-lang="el">Βράδυ 18:00 – 23:30</span>
+                <span data-lang="en">Evenings 18:00 – 23:30</span>
+                <br />
+                <span data-lang="el">Δευτέρα έως Σάββατο · Κυριακή: καλέστε για επιβεβαίωση</span>
+                <span data-lang="en">Monday to Saturday · Sunday: call to confirm</span>
+              </p>
+            </div>
+            <div class="info-card">
+              <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+              <h3><span data-lang="el">Διεύθυνση</span><span data-lang="en">Address</span></h3>
+              <p>
+                <span data-lang="el">Θεοτοκοπούλου 5, Ιεράπετρα, Κρήτη</span>
+                <span data-lang="en">Theotokopoulou 5, Ierapetra, Crete</span>
+              </p>
+            </div>
+            <div class="info-card">
+              <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+              <h3><span data-lang="el">Τηλέφωνο</span><span data-lang="en">Phone</span></h3>
+              <p>
+                <a href="tel:+302842026074">+30 28420 26074</a>
+                <br />
+                <span data-lang="el">Στο κατάστημα και delivery</span>
+                <span data-lang="en">Dine in and delivery</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" id="menu">
+        <div class="page-hero">
+          <h1><span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span></h1>
+          <p>
+            <span data-lang="el">Pizza · Καλτσόνε · Πεϊνιρλί · Ψωμάκια φούρνου</span>
+            <span data-lang="en">Pizza · Calzone · Peinirli · Baked breads</span>
+          </p>
+        </div>
+        <div class="wrap wrap-narrow menu-page">
+          <nav class="cat-nav" aria-label="Menu">
+            <ul>
+              <li>
+                <a href="#pizza">
+                  <span data-lang="el">Πίτσα (30cm)</span>
+                  <span data-lang="en">Pizza (30cm)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#calzone">
+                  <span data-lang="el">Καλτσόνε</span>
+                  <span data-lang="en">Calzone</span>
+                </a>
+              </li>
+              <li>
+                <a href="#peinirli">
+                  <span data-lang="el">Πεϊνιρλί</span>
+                  <span data-lang="en">Peinirli</span>
+                </a>
+              </li>
+              <li>
+                <a href="#baked">
+                  <span data-lang="el">Ψωμάκια Φούρνου</span>
+                  <span data-lang="en">Baked Breads</span>
+                </a>
+              </li>
+              <li>
+                <a href="#breads">
+                  <span data-lang="el">Ψωμιά</span>
+                  <span data-lang="en">Garlic &amp; cheese breads</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <section class="menu-section" id="pizza">
+            <h2><span data-lang="el">Πίτσα (30cm)</span><span data-lang="en">Pizza (30cm)</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Μαργαρίτα</span><span data-lang="en">Margarita</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€7.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, σάλτσα</span><span data-lang="en">Cheese, sauce</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Απλή</span><span data-lang="en">Simple</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€8.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν</span><span data-lang="en">Cheese, ham</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">3.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Σπέσιαλ</span><span data-lang="en">Special</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€10.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν, μπέικον, σαλάμι, μανιτάρια, πιπεριά</span><span data-lang="en">Cheese, ham, bacon, salami, mushrooms, peppers</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">4.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Φιλαδέλφια</span><span data-lang="en">Philadelphia</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€11.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, γαλοπούλα, μπέικον, φιλαδέλφια, φρ. ντομάτα, κρεμμύδι</span><span data-lang="en">Cheese, turkey, bacon, philadelphia, fresh tomato, onion</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">5.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Χορτοφάγων</span><span data-lang="en">Vegetarians</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, μανιτάρια, καλαμπόκι, πιπεριά, φρ. ντομάτα, κρεμμύδι</span><span data-lang="en">Cheese, mushrooms, corn, pepper, fresh tomato, onion</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">6.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Ελληνική</span><span data-lang="en">Greek</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ελιές, φέτα, φρ. ντομάτα, πιπεριά, ρίγανη, κρεμμύδι</span><span data-lang="en">Cheese, olives, feta cheese, fresh tomato, peppers, oregano, onion</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">7.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Ala chicken</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€11.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, κοτόπουλο, ντομάτα, πιπεριά</span><span data-lang="en">Cheese, chicken, tomato, pepper</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">8.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Ala tono</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€11.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, τόνος, κρεμμύδι</span><span data-lang="en">Cheese, tuna, onion</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">9.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Billy's Pizza</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€12.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, κρέμα γάλακτος, σκόρδο, μπιφτέκι, μπέικον</span><span data-lang="en">Cheese, milk cream, garlic, burger, bacon</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">10.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Tommy</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν, μπέικον, ελιές, πιπεριά</span><span data-lang="en">Cheese, ham, bacon, olives, peppers</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">11.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Μπέικον</span><span data-lang="en">Bacon</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν, μπέικον</span><span data-lang="en">Cheese, ham, bacon</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">12.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Leggiero (Ελαφριά)</span><span data-lang="en">Leggiero (Light)</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, γαλοπούλα, φρ. ντομάτα, πιπεριά</span><span data-lang="en">Cheese, turkey, fresh tomato, pepper</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">13.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Καπριτσιόζα</span><span data-lang="en">Capricciosa</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€8.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν, μανιτάρια</span><span data-lang="en">Cheese, ham, mushrooms</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">14.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Tifossi</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€10.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, σαλάμι, πεπερόνι, φρ. ντομάτα, ελιές</span><span data-lang="en">Cheese, salami, pepperoni, fresh tomato, olives</span></p>
+                </div>
+              </li>
+            </ol>
+            <p class="note">
+              <span data-lang="el">Διατίθεται και με ζυμάρι ολικής άλεσης (+€1,50)</span>
+              <span data-lang="en">Also available with wholegrain dough (+€1.50)</span>
+            </p>
+          </section>
+
+          <section class="menu-section" id="calzone">
+            <h2><span data-lang="el">Καλτσόνε</span><span data-lang="en">Calzone</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Ζαμπόν, Τυρί</span><span data-lang="en">Ham, Cheese</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€8.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Ζαμπόν, τυρί</span><span data-lang="en">Ham, cheese</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Γαλοπούλα, Τυρί</span><span data-lang="en">Turkey, Cheese</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Γαλοπούλα, τυρί</span><span data-lang="en">Turkey, cheese</span></p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="menu-section" id="peinirli">
+            <h2><span data-lang="el">Πεϊνιρλί</span><span data-lang="en">Peinirli</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Τυρί, Σάλτσα φρ. ντομάτας</span><span data-lang="en">Cheese, Fresh tomato sauce</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€7.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, σάλτσα φρέσκιας ντομάτας</span><span data-lang="en">Cheese, fresh tomato sauce</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Ζαμπόν, Μπέικον, Τυρί</span><span data-lang="en">Ham, Bacon, Cheese</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€10.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Ζαμπόν, μπέικον, τυρί</span><span data-lang="en">Ham, bacon, cheese</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">3.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Γαλοπούλα, Τυρί</span><span data-lang="en">Turkey, Cheese</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€9.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Γαλοπούλα, τυρί</span><span data-lang="en">Turkey, cheese</span></p>
+                </div>
+              </li>
+            </ol>
+            <p class="note">
+              <span data-lang="el">Σάλτσα πάντα από φρέσκια ντομάτα</span>
+              <span data-lang="en">Sauce always from fresh tomato</span>
+            </p>
+          </section>
+
+          <section class="menu-section" id="baked">
+            <h2><span data-lang="el">Ψωμάκια Φούρνου</span><span data-lang="en">Baked Breads</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Απλό</span><span data-lang="en">Simple</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€5.00</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν</span><span data-lang="en">Cheese, ham</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Χάμπουργκερ</span><span data-lang="en">Hamburher</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, μπιφτέκι, φρ. ντομάτα, μαγιονέζα</span><span data-lang="en">Cheese, burger, fresh tomato, mayonnaise</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">3.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Σπέσιαλ</span><span data-lang="en">Special</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, ζαμπόν, μπέικον, σαλάμι, μανιτάρια, πιπεριά, μαγιονέζα</span><span data-lang="en">Cheese, ham, bacon, salami, mushrooms, peppers, mayonnaise</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">4.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3>Ala tono</h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, τόνος, κρεμμύδι, μαγιονέζα, φρ. ντομάτα</span><span data-lang="en">Cheese, tuna, onion, mayonnaise, fresh tomato</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">5.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Φιλαδέλφια</span><span data-lang="en">Philadelphia</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€6.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, γαλοπούλα, μπέικον, φιλαδέλφια, φρ. ντομάτα, κρεμμύδι</span><span data-lang="en">Cheese, turkey, bacon, philadelphia, fresh tomato, onion</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">6.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Χορτοφάγων</span><span data-lang="en">Vegetarians</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€5.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρί, καλαμπόκι, ελιές, μανιτάρια, πιπεριά, κρεμμύδι, ντομάτα</span><span data-lang="en">Cheese, corn, olives, mushrooms, pepper, onion, fresh tomato</span></p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="menu-section" id="breads">
+            <h2><span data-lang="el">Ψωμιά</span><span data-lang="en">Garlic &amp; cheese breads</span></h2>
+            <hr class="rule" />
+            <ol class="menu-list">
+              <li class="menu-item">
+                <span class="menu-num">1.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Σκορδόψωμο</span><span data-lang="en">Garlic Bread</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€3.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Σκορδόψωμο</span><span data-lang="en">Garlic bread</span></p>
+                </div>
+              </li>
+              <li class="menu-item">
+                <span class="menu-num">2.</span>
+                <div class="menu-item-body">
+                  <div class="menu-name-row">
+                    <h3><span data-lang="el">Τυρόψωμο</span><span data-lang="en">Cheese Bread</span></h3>
+                    <span class="dots" aria-hidden="true"></span>
+                    <span class="price">€3.50</span>
+                  </div>
+                  <p class="ings"><span data-lang="el">Τυρόψωμο</span><span data-lang="en">Cheese bread</span></p>
+                </div>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="visit">
+        <div class="page-hero">
+          <h1><span data-lang="el">Βρείτε μας</span><span data-lang="en">Find us</span></h1>
+          <p>
+            <span data-lang="el">Βρείτε μας · Καλέστε μας · Ελάτε</span>
+            <span data-lang="en">Find us · Call us · Come by</span>
+          </p>
+        </div>
+        <div class="wrap wrap-narrow visit-intro">
+          <p class="eyebrow">
+            Billy's Pizza · <span data-lang="el">Ιεράπετρα</span><span data-lang="en">Ierapetra</span>
+          </p>
+          <h2 class="heading">
+            <span data-lang="el">Περάστε το βράδυ, ή καλέστε και σας το φέρνουμε.</span>
+            <span data-lang="en">Come by in the evening, or call and we will bring it to you.</span>
+          </h2>
+          <div class="detail-grid">
+            <div class="detail">
+              <div class="ico"><svg aria-hidden="true"><use href="#i-pin"></use></svg></div>
+              <div>
+                <h3><span data-lang="el">Διεύθυνση</span><span data-lang="en">Address</span></h3>
+                <p>
+                  <span data-lang="el">Θεοτοκοπούλου 5, Ιεράπετρα, Κρήτη</span>
+                  <span data-lang="en">Theotokopoulou 5, Ierapetra, Crete</span>
+                </p>
+                <div class="detail-actions">
+                  <a
+                    class="btn btn-outline"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Theotokopoulou+5%2C+Ierapetra%2C+Greece"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span data-lang="el">Οδηγίες</span>
+                    <span data-lang="en">Directions</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="detail">
+              <div class="ico"><svg aria-hidden="true"><use href="#i-clock"></use></svg></div>
+              <div>
+                <h3><span data-lang="el">Ωράριο</span><span data-lang="en">Hours</span></h3>
+                <p>
+                  <span data-lang="el">Δευτέρα – Παρασκεύη: 18:00 – 23:30
+Σάββατο & Κυριακή: Κλειστά ή καλέστε για επιβεβαίωση</span>
+                  <span data-lang="en">Monday – Friday: 18:00 – 23:30
+Saturday & Sunday: Closed or call to confirm</span>
+                </p>
+                <p class="tiny">
+                  <span data-lang="el">Ωράριο από δημόσιες καταχωρίσεις — καλέστε αν δεν είστε σίγουροι.</span>
+                  <span data-lang="en">Hours from public listings — please call if you are unsure.</span>
+                </p>
+              </div>
+            </div>
+            <div class="detail">
+              <div class="ico"><svg aria-hidden="true"><use href="#i-phone"></use></svg></div>
+              <div>
+                <h3><span data-lang="el">Τηλέφωνο</span><span data-lang="en">Phone</span></h3>
+                <p>+30 28420 26074</p>
+                <div class="detail-actions">
+                  <a class="btn btn-gold" href="tel:+302842026074">
+                    <span data-lang="el">Καλέστε μας</span>
+                    <span data-lang="en">Call us</span>
+                  </a>
+                  <a
+                    class="btn btn-outline"
+                    href="https://www.facebook.com/p/Billys-pizza-100063556241401/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span data-lang="el">Facebook</span>
+                    <span data-lang="en">Facebook</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="map-sec">
+          <div class="wrap">
+            <div class="map-head">
+              <h2>
+                <span class="accent">· </span>
+                <span data-lang="el">Η Billy's Pizza στον χάρτη</span>
+                <span data-lang="en">Billy's Pizza on the map</span>
+              </h2>
+              <div class="map-line"></div>
+            </div>
+            <div class="map-box">
+              <iframe
+                title="Billy's Pizza"
+                src="https://maps.google.com/maps?q=Theotokopoulou%205%2C%20Ierapetra%2C%20Greece&amp;z=17&amp;output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <a href="#home" class="logo" data-nav="home">
+            <img src="photos/logo.png" alt="Billy's Pizza" />
+          </a>
+          <p class="muted" style="margin-top: 0.75rem; max-width: 18rem">
+            <span data-lang="el">Η πιτσαρία της γειτονιάς στην Ιεράπετρα</span>
+            <span data-lang="en">Neighbourhood pizza in Ierapetra</span>
+          </p>
+        </div>
+        <div>
+          <h4><span data-lang="el">Σελίδες</span><span data-lang="en">Pages</span></h4>
+          <nav class="footer-links muted">
+            <a href="#home" data-nav="home"><span data-lang="el">Αρχική</span><span data-lang="en">Home</span></a>
+            <a href="#menu" data-nav="menu"><span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span></a>
+            <a href="#visit" data-nav="visit"><span data-lang="el">Επίσκεψη</span><span data-lang="en">Visit</span></a>
+          </nav>
+        </div>
+        <div>
+          <h4><span data-lang="el">Ωράριο</span><span data-lang="en">Hours</span></h4>
+          <div class="hours-block muted">
+            <p>
+              <span data-lang="el">Δευτέρα – Σάββατο</span>
+              <span data-lang="en">Monday – Saturday</span>
+              <br />
+              18:00 – 23:30
+            </p>
+            <p style="margin-top: 0.5rem">
+              <span data-lang="el">Κυριακή</span>
+              <span data-lang="en">Sunday</span>
+              <br />
+              <span data-lang="el">Κλειστά ή καλέστε για επιβεβαίωση</span>
+              <span data-lang="en">Closed or call to confirm</span>
+            </p>
+            <p style="padding-top: 0.5rem">
+              <span data-lang="el">Θεοτοκοπούλου 5, Ιεράπετρα, Κρήτη</span>
+              <span data-lang="en">Theotokopoulou 5, Ierapetra, Crete</span>
+            </p>
+            <a href="tel:+302842026074">+30 28420 26074</a>
+          </div>
+        </div>
+      </div>
+      <p class="foot-bottom">
+        <span data-lang="el">Billy's Pizza · Ιεράπετρα, Κρήτη</span>
+        <span data-lang="en">Billy's Pizza · Ierapetra, Crete</span>
+      </p>
+    </footer>
+
+    <div class="call-bar">
+      <div class="call-bar-inner">
+        <a class="btn btn-gold" href="tel:+302842026074">
+          <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+          <span data-lang="el">Κλήση στη Billy's Pizza</span>
+          <span data-lang="en">Call Billy's Pizza</span>
+        </a>
+        <a
+          class="btn btn-outline"
+          href="https://www.google.com/maps/dir/?api=1&destination=Theotokopoulou+5%2C+Ierapetra%2C+Greece"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+          <span data-lang="el">Οδηγίες</span>
+          <span data-lang="en">Directions</span>
+        </a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
