@@ -12,7 +12,7 @@ Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 43123 --bind 0.0.0.0
 ```
 
-Then visit billys-pizza.gr.
+Then visit https://billys-pizza.gr/#home.
 
 ## Pages
 
