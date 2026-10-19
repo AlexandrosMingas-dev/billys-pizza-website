@@ -1641,17 +1641,18 @@ main {
   }
 
   .visit-bg img {
-    opacity: 0.22;
+    opacity: 0.45;
     object-position: center;
   }
 
-  /* text sits straight on top of it here, so hold the map well back */
+  /* text sits straight on top of it here, so the scrim stays — just thin
+     enough now that the streets read as a map and not as a texture */
   .visit-bg::after {
     background: linear-gradient(
       to bottom,
       var(--ink) 0%,
-      color-mix(in srgb, var(--ink) 78%, transparent) 22%,
-      color-mix(in srgb, var(--ink) 78%, transparent) 78%,
+      color-mix(in srgb, var(--ink) 58%, transparent) 22%,
+      color-mix(in srgb, var(--ink) 58%, transparent) 78%,
       var(--ink) 100%
     );
   }
