@@ -236,6 +236,28 @@
     if (prev) prev.addEventListener("click", function () { go(index - 1); });
     if (next) next.addEventListener("click", function () { go(index + 1); });
 
+    /* The edge arrows are hidden on a phone, so the slides take a swipe
+       instead. Vertical drags are left alone — that is the page scrolling. */
+    var swipeX = null;
+    var swipeY = null;
+
+    hero.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      swipeX = e.touches[0].clientX;
+      swipeY = e.touches[0].clientY;
+    }, { passive: true });
+
+    hero.addEventListener("touchend", function (e) {
+      if (swipeX === null) return;
+      var touch = e.changedTouches[0];
+      var dx = touch.clientX - swipeX;
+      var dy = touch.clientY - swipeY;
+      swipeX = null;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        go(dx < 0 ? index + 1 : index - 1);
+      }
+    }, { passive: true });
+
     /* No pause on hover: the hero is the whole screen, so the pointer rests
        inside it almost always and the slider would simply never advance.
        Keyboard focus still pauses, since that means someone is using it. */

@@ -30,6 +30,15 @@ Tap **EN / ΕΛ** in the header to switch language. The choice is stored in the 
 - **The reel.** One pizza at a time, each drawing a leader line out to its name and price. It advances only on its arrows (or by clicking a tick) — never on scroll position, so you can look at a pizza without the page taking it away.
 - Everything above is switched off under `prefers-reduced-motion`, where the reel becomes an ordinary list.
 
+## On a phone
+
+Below `48rem` the site is one column driven with a thumb, and the rule the whole layer serves is that **nothing may be wider than the screen**. A phone answers an over-wide page by zooming the entire layout out until it fits, which is how the site used to open: `.closer-inner` is a grid item of a grid parent, so its automatic minimum size was its min-content width — three 14rem tracks, 768px — and the page was laid out 768 wide with the content in the left half of it. The tracks now use `minmax(min(14rem, 100%), 1fr)` with `min-width: 0`, and `html`/`body` carry `overflow-x: clip` as a backstop. `clip` rather than `hidden`: it never makes a scroll container, so the sticky header and the sticky fire behind the reel go on working.
+
+- **The hamburger.** The nav folds into one gold, boxed, 46px control in the header — `#i-burger` in the sprite. It replaced three small grey dots that read as "more options" rather than "menu".
+- **Heights.** The hero is measured in `svh` (the viewport with the address bar showing), not `vh`, so its buttons are not parked under the browser chrome until you scroll. The same goes for the reel stage.
+- **The hero slides.** The edge arrows are hidden — nothing hovers on a touch screen, so they were permanently parked over the picture — and a horizontal swipe takes their place. Vertical drags are left alone, since that is the page scrolling.
+- **Landing on a page.** `#menu` and `#visit` are real fragment targets, so the browser scrolls to them on load; `scroll-margin-top` on `.page` keeps the title out from behind the sticky header.
+
 ## Photos
 
 Food photographs live in `photos/menu/` as circular WebP cut-outs with a transparent background, so they sit on the dark page without a grey box behind them. They were cut from the venue's Wolt listing originals, which are kept locally rather than in the repo (`photos/wolt menu/`, gitignored).

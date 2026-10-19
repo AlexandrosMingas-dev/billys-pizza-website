@@ -52,10 +52,15 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  /* nothing may widen the page past the screen: a phone answers that by
+     zooming the whole layout out, which is how the site used to open */
+  overflow-x: clip;
 }
 
 body {
   min-height: 100vh;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: rgb(200 151 58 / 18%);
   display: flex;
   flex-direction: column;
   background: var(--ink);
@@ -342,16 +347,32 @@ h4 {
   background: var(--ochre);
 }
 
+/* The one control a phone visitor has to find. Gold, boxed and a full
+   44px target, rather than three grey dots the size of a full stop. */
 .menu-toggle {
   display: none;
-  padding: 0.4rem;
+  width: 2.9rem;
+  height: 2.9rem;
+  place-items: center;
+  flex: none;
+  border: 1px solid var(--ochre);
+  border-radius: 0.6rem;
+  background: color-mix(in srgb, var(--ochre) 12%, transparent);
+  color: var(--ochre-lift);
   cursor: pointer;
-  color: var(--lime);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .menu-toggle svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.menu-toggle:hover,
+.menu-toggle[aria-expanded="true"] {
+  background: var(--ochre);
+  border-color: var(--ochre);
+  color: var(--ink);
 }
 
 /* --------------------------------------------------------------- drawer   */
@@ -441,6 +462,12 @@ main {
 
 .page.is-active {
   display: block;
+}
+
+/* #menu and #visit are real fragment targets, so the browser scrolls to them
+   on load; without this the page title lands behind the sticky header */
+.page {
+  scroll-margin-top: 5rem;
 }
 
 .section {
@@ -1039,7 +1066,10 @@ main {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  /* min() keeps the track from demanding 14rem on a narrower screen, and
+     min-width:0 stops the grid item from claiming its min-content width */
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  min-width: 0;
   gap: 2rem;
   padding-block: clamp(3rem, 7vw, 4.5rem);
 }
@@ -1652,6 +1682,14 @@ main {
   }
 }
 
+/* ------------------------------------------------------------------ phones
+   Below 48rem the site is one column driven with a thumb. The nav folds into
+   the gold hamburger, the hero sizes itself to the screen it is actually
+   given rather than one it guesses at, and every row of three becomes a
+   stack. Nothing here may be wider than the screen: a phone answers that by
+   zooming the whole layout out.
+   ------------------------------------------------------------------------ */
+
 @media (max-width: 48rem) {
   .desktop-nav,
   .header-call {
@@ -1659,11 +1697,22 @@ main {
   }
 
   .menu-toggle {
-    display: block;
+    display: grid;
+  }
+
+  .header-inner {
+    gap: 0.75rem;
+    min-height: 3.9rem;
   }
 
   .header-actions {
     margin-inline-start: auto;
+    gap: 0.65rem;
+  }
+
+  /* a thumb-sized target, not a mouse-sized one */
+  .lang-toggle button {
+    padding: 0.5rem 0.7rem;
   }
 
   .call-bar {
@@ -1675,9 +1724,205 @@ main {
   }
 
   .cat-nav {
-    top: 4.25rem;
+    top: 3.9rem;
+  }
+
+  .drawer {
+    width: min(21rem, 86vw);
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+
+  .drawer-nav a {
+    padding: 1rem 0;
+  }
+
+  /* hero ----------------------------------------------------------------
+     svh is the short viewport — the height with the address bar showing. The
+     hero used to be measured against 100vh, which is the tall one, so its
+     buttons sat under the browser chrome until you scrolled. */
+  .hero,
+  .hero-content {
+    min-height: calc(100vh - 3.9rem);
+    min-height: calc(100svh - 3.9rem);
+  }
+
+  .hero-content {
+    padding-block: 2.25rem 2.75rem;
+  }
+
+  .hero-logo {
+    margin-bottom: 1rem;
+  }
+
+  .hero-logo img {
+    width: min(58vw, 12rem);
+  }
+
+  .slides {
+    margin-bottom: 1rem;
+  }
+
+  .slide-sub {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* nothing hovers here, so the edge arrows were permanently parked over the
+     picture. The dots stay, and a swipe does the same job (see script.js). */
+  .hero-arrows {
+    display: none;
+  }
+
+  /* the first call to action takes the full width; the other two share a row */
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 21rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-actions > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    padding-inline: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+  }
+
+  .status {
+    margin-bottom: 0.75rem;
+  }
+
+  /* welcome -------------------------------------------------------------- */
+
+  .welcome-shots {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-shots img:last-child {
+    width: 100%;
+    margin-top: 0;
+    margin-inline-start: 0;
+  }
+
+  .claims {
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 2rem;
+  }
+
+  .welcome-actions .btn {
+    flex: 1 1 100%;
+  }
+
+  /* the reel ------------------------------------------------------------- */
+
+  .reel-stage {
+    --disc: min(17rem, 34svh, 66vw);
+    height: min(36rem, 80svh);
+    min-height: 25rem;
+  }
+
+  .reel-disc {
+    width: var(--disc);
+  }
+
+  /* the controls get a strip of their own at the foot of the stage, so the
+     arrows cannot land on top of the card they are there to change */
+  .reel-item {
+    inset: 0 0 3.75rem;
+  }
+
+  .callout,
+  .callout-left,
+  .callout-right {
+    width: min(21rem, 88vw);
+  }
+
+  .callout-body {
+    padding: 1rem 1.1rem;
+  }
+
+  .reel-controls {
+    bottom: 0.5rem;
+    gap: 1rem;
+  }
+
+  /* the closing facts ---------------------------------------------------- */
+
+  .closer-inner {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding-block: 2.75rem;
+  }
+
+  .closer {
+    min-height: 0;
+  }
+
+  /* menu ----------------------------------------------------------------- */
+
+  .cat-nav ul {
+    gap: 1rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-nav li {
+    scroll-snap-align: start;
+  }
+
+  .menu-item {
+    gap: 0.7rem;
+  }
+
+  .menu-thumb {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .menu-num {
+    width: 1.5rem;
+  }
+
+  .menu-section {
+    scroll-margin-top: 7.5rem;
+  }
+
+  /* visit ---------------------------------------------------------------- */
+
+  .visit-intro .heading {
+    max-width: none;
+  }
+
+  .detail-grid {
+    gap: 2.25rem;
+  }
+
+  .map-box iframe {
+    height: 17rem;
+  }
+
+  /* footer and the standing call bar ------------------------------------- */
+
+  .footer-inner {
+    gap: 1.75rem;
+  }
+
+  .call-bar .btn {
+    padding-inline: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
   }
 }
+
+/* ------------------------------------------------------------ small phones */
 
 @media (max-width: 30rem) {
   :root {
@@ -1687,6 +1932,22 @@ main {
   .menu-thumb {
     width: 2.1rem;
     height: 2.1rem;
+  }
+
+  .slide-title {
+    font-size: 1.55rem;
+  }
+
+  .hero-logo img {
+    width: min(56vw, 10.5rem);
+  }
+
+  .reel-head {
+    padding-top: 2.75rem;
+  }
+
+  .map-head {
+    gap: 0.9rem;
   }
 
   .call-bar-inner .btn span {
