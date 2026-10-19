@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=12" />
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false">
@@ -79,6 +79,14 @@
           <a href="#visit" class="nav-link" data-nav="visit">
             <span data-lang="el">Επίσκεψη</span><span data-lang="en">Visit</span>
           </a>
+          <a
+            href="https://wolt.com/el/grc/ierapetra/restaurant/billy-s-pizza"
+            class="nav-link nav-order"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span data-lang="el">Παραγγείλτε τώρα</span><span data-lang="en">Order now</span>
+          </a>
         </nav>
 
         <div class="header-actions">
@@ -115,7 +123,7 @@
           <svg aria-hidden="true" width="20" height="20"><use href="#i-close"></use></svg>
         </button>
       </div>
-      <nav aria-label="Mobile">
+      <nav class="drawer-nav" aria-label="Mobile">
         <a href="#home" data-nav="home">
           <span data-lang="el">Αρχική</span><span data-lang="en">Home</span>
         </a>
@@ -124,6 +132,9 @@
         </a>
         <a href="#visit" data-nav="visit">
           <span data-lang="el">Επίσκεψη</span><span data-lang="en">Visit</span>
+        </a>
+        <a href="https://wolt.com/el/grc/ierapetra/restaurant/billy-s-pizza" class="nav-order" target="_blank" rel="noreferrer">
+          <span data-lang="el">Παραγγείλτε τώρα</span><span data-lang="en">Order now</span>
         </a>
       </nav>
       <div class="drawer-footer">
@@ -140,59 +151,85 @@
 
     <main>
       <section class="page is-active" id="home">
-        <section class="slider" id="slider" aria-roledescription="carousel">
-          <div class="slide is-active">
-            <img src="photos/turkey.jpg" alt="" />
+        <section class="hero" id="hero">
+            <img
+              class="hero-slide is-active"
+              data-shot="0"
+              src="photos/margarita.jpg"
+              alt=""
+              fetchpriority="high"
+            />
+            <img
+              class="hero-slide"
+              data-shot="1"
+              src="photos/turkey.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <img
+              class="hero-slide"
+              data-shot="2"
+              src="photos/hamburger1.jpg"
+              alt=""
+              loading="lazy"
+            />
+          <div class="hero-overlay" aria-hidden="true"></div>
+
+          <div class="hero-arrows" aria-hidden="false">
+                <button type="button" class="hero-arrow" id="hero-prev">
+                  <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
+                  <svg aria-hidden="true"><use href="#i-left"></use></svg>
+                </button>
+                <button type="button" class="hero-arrow" id="hero-next">
+                  <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
+                  <svg aria-hidden="true"><use href="#i-right"></use></svg>
+                </button>
           </div>
-          <div class="slide" aria-hidden="true">
-            <img src="photos/hamburger1.jpg" alt="" />
-          </div>
-          <div class="slide" aria-hidden="true">
-            <img src="photos/margarita.jpg" alt="" />
-          </div>
-          <div class="slider-overlay"></div>
-          <div class="wrap slider-content">
+          <div class="wrap hero-content">
             <p class="eyebrow">
               <span data-lang="el">Ιεράπετρα, Κρήτη</span>
               <span data-lang="en">Ierapetra, Crete</span>
             </p>
-            <h1>
-              <span class="sr-only">Billy's Pizza</span>
-              <span class="logo logo-lg">
-                <img src="photos/logo.png" alt="" />
-              </span>
+
+            <h1 class="hero-logo">
+              <img src="photos/logo.png" width="420" height="210" alt="Billy's Pizza" />
             </h1>
-            <div class="slide-caption is-active">
-              <p class="slider-title">
-                <span data-lang="el">Η γεύση που λατρεύεις</span>
-                <span data-lang="en">The taste you love</span>
-              </p>
-              <p class="slider-sub">
-                <span data-lang="el">Φρέσκα υλικά · Παραδοσιακές συνταγές</span>
-                <span data-lang="en">Fresh ingredients · Traditional recipes</span>
-              </p>
+
+            <div class="slides">
+                <div class="slide is-active" data-slide="0">
+                  <p class="slide-title">
+                    <span data-lang="el">Καλώς ήρθατε στην Billy's</span>
+                    <span data-lang="en">Welcome to Billy's</span>
+                  </p>
+                </div>
+                <div class="slide" data-slide="1">
+                  <p class="slide-title">
+                    <span data-lang="el">Η γεύση που λατρεύεις</span>
+                    <span data-lang="en">The taste you love</span>
+                  </p>
+                  <p class="slide-sub">
+                    <span data-lang="el">Φρέσκα υλικά · Παραδοσιακές συνταγές</span>
+                    <span data-lang="en">Fresh ingredients · Traditional recipes</span>
+                  </p>
+                </div>
+                <div class="slide" data-slide="2">
+                  <p class="slide-title">
+                    <span data-lang="el">Ψωμάκια φούρνου</span>
+                    <span data-lang="en">Baked breads</span>
+                  </p>
+                  <p class="slide-sub">
+                    <span data-lang="el">Χάμπουργκερ, σπέσιαλ και άλλα</span>
+                    <span data-lang="en">Hamburger, special, and more</span>
+                  </p>
+                </div>
             </div>
-            <div class="slide-caption">
-              <p class="slider-title">
-                <span data-lang="el">Ψωμάκια φούρνου</span>
-                <span data-lang="en">Baked breads</span>
-              </p>
-              <p class="slider-sub">
-                <span data-lang="el">Χάμπουργκερ, σπέσιαλ και άλλα</span>
-                <span data-lang="en">Hamburger, special, and more</span>
-              </p>
-            </div>
-            <div class="slide-caption">
-              <p class="slider-title">
-                <span data-lang="el">Καλώς ήρθατε στην Billy's</span>
-                <span data-lang="en">Welcome to Billy's</span>
-              </p>
-              <p class="slider-sub">
-                <span data-lang="el">Ιεράπετρα, Κρήτη</span>
-                <span data-lang="en">Ierapetra, Crete</span>
-              </p>
-            </div>
-            <div class="slider-actions">
+
+            <p class="status" id="status" hidden>
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text"></span>
+            </p>
+
+            <div class="hero-actions">
               <a class="btn btn-gold" href="#menu" data-nav="menu">
                 <span data-lang="el">Δείτε τον κατάλογο</span>
                 <span data-lang="en">View the menu</span>
@@ -202,253 +239,245 @@
                 <span data-lang="el">Καλέστε μας</span>
                 <span data-lang="en">Call us</span>
               </a>
-              <a
-                class="btn btn-ghost"
-                href="https://www.google.com/maps/dir/?api=1&destination=Theotokopoulou+5%2C+Ierapetra%2C+Greece"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+              <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Theotokopoulou+5%2C+Ierapetra%2C+Greece" target="_blank" rel="noreferrer">
                 <span data-lang="el">Οδηγίες</span>
                 <span data-lang="en">Directions</span>
               </a>
             </div>
-          </div>
-          <button type="button" class="slider-btn slider-prev" id="slider-prev">
-            <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
-            <svg aria-hidden="true"><use href="#i-left"></use></svg>
-          </button>
-          <button type="button" class="slider-btn slider-next" id="slider-next">
-            <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
-            <svg aria-hidden="true"><use href="#i-right"></use></svg>
-          </button>
-          <div class="slider-dots">
-            <button type="button" class="dot is-active" aria-label="1" aria-current="true"></button>
-            <button type="button" class="dot" aria-label="2"></button>
-            <button type="button" class="dot" aria-label="3"></button>
+
+            <div class="hero-controls">
+              <div class="hero-dots" role="group" aria-label="Slides">
+                  <button type="button" class="hero-dot is-active" data-dot="0" aria-label="1" aria-current="true"></button>
+                  <button type="button" class="hero-dot" data-dot="1" aria-label="2"></button>
+                  <button type="button" class="hero-dot" data-dot="2" aria-label="3"></button>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section class="section">
+        <section class="section welcome">
           <div class="wrap welcome-grid">
             <div>
-              <p class="eyebrow">
-                <span data-lang="el">Καλώς ήρθατε</span>
-                <span data-lang="en">Welcome</span>
-              </p>
-              <h2 class="heading">
-                <span data-lang="el">Η Billy's Pizza στην</span>
-                <span data-lang="en">Billy's Pizza in</span>
-                <span class="accent">
-                  <span data-lang="el"> Ιεράπετρα</span>
-                  <span data-lang="en"> Ierapetra</span>
-                </span>
-              </h2>
-              <p class="body">
-                <span data-lang="el">Η Billy's Pizza ήρθε για να μείνει στον γαστρονομικό χάρτη της Ιεράπετρας. Η καλή πίτσα ξεκινάει από φρέσκα υλικά και τελειώνει με ένα χαμόγελο. Από την κλασική Μαργαρίτα μέχρι τις δικές μας πίτσες — delivery, takeaway ή επιτόπου.</span>
-                <span data-lang="en">Billy's Pizza is here to stay on Ierapetra's food map. Good pizza starts with fresh ingredients and ends with a satisfied smile. From classic Margarita to our own pies — delivery, takeaway, or at the table.</span>
-              </p>
-              <div class="welcome-actions">
-                <a class="btn btn-gold" href="#menu" data-nav="menu">
-                  <span data-lang="el">Δείτε τον κατάλογο</span>
-                  <span data-lang="en">View the menu</span>
-                </a>
-                <a class="btn btn-outline" href="tel:+302842026074">+30 28420 26074</a>
-              </div>
-            </div>
-            <div class="photo-frame" id="welcome-slider" aria-roledescription="carousel">
-              <div class="slide is-active">
-                <img src="photos/visits.jpg" alt="Billy's Pizza, Ierapetra" />
-              </div>
-              <div class="slide" aria-hidden="true">
-                <img src="photos/hero.jpg" alt="inside" />
-              </div>
-              <button type="button" class="slider-btn slider-prev" id="welcome-prev">
-                <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
-                <svg aria-hidden="true"><use href="#i-left"></use></svg>
-              </button>
-              <button type="button" class="slider-btn slider-next" id="welcome-next">
-                <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
-                <svg aria-hidden="true"><use href="#i-right"></use></svg>
-              </button>
-              <div class="slider-dots">
-                <button type="button" class="dot is-active" aria-label="1" aria-current="true"></button>
-                <button type="button" class="dot" aria-label="2"></button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="features">
-          <div class="wrap features-inner">
-            <div class="feature">
-              <svg aria-hidden="true"><use href="#i-leaf"></use></svg>
-              <h3>
-                <span data-lang="el">Φρέσκα υλικά</span>
-                <span data-lang="en">Fresh ingredients</span>
-              </h3>
-              <p>
-                <span data-lang="el">Επιλεγμένα προϊόντα κάθε μέρα</span>
-                <span data-lang="en">Chosen produce, every day</span>
-              </p>
-            </div>
-            <div class="feature">
-              <svg aria-hidden="true"><use href="#i-pizza"></use></svg>
-              <h3>
-                <span data-lang="el">Ζύμη από την αρχή</span>
-                <span data-lang="en">Dough from scratch</span>
-              </h3>
-              <p>
-                <span data-lang="el">Παραδοσιακή συνταγή, καθημερινά</span>
-                <span data-lang="en">Traditional recipe, made daily</span>
-              </p>
-            </div>
-            <div class="feature">
-              <svg aria-hidden="true"><use href="#i-bike"></use></svg>
-              <h3>
-                <span data-lang="el">Delivery &amp; takeaway</span>
-                <span data-lang="en">Delivery &amp; takeaway</span>
-              </h3>
-              <p>
-                <span data-lang="el">Στο σπίτι σας ή για παραλαβή</span>
-                <span data-lang="en">To your door, or ready to collect</span>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="wrap">
-            <div class="featured-head">
-              <div>
-                <p class="eyebrow">
-                  <span data-lang="el">Από τον φούρνο</span>
-                  <span data-lang="en">From the oven</span>
-                </p>
-                <h2 class="heading">
-                  <span data-lang="el">Οι αγαπημένες του Billy's, όταν πεινάσετε.</span>
-                  <span data-lang="en">House favourites, ready when you are.</span>
-                </h2>
-              </div>
-              <a class="btn btn-outline" href="#menu" data-nav="menu">
-                <span data-lang="el">Όλος ο κατάλογος</span>
-                <span data-lang="en">See the full menu</span>
+            <p class="eyebrow">
+              <span data-lang="el">Καλώς ήρθατε</span>
+              <span data-lang="en">Welcome</span>
+            </p>
+            <h2 class="heading">
+              <span data-lang="el">Η Billy's Pizza στην</span>
+              <span data-lang="en">Billy's Pizza in</span>
+              <span class="accent">
+                <span data-lang="el"> Ιεράπετρα</span>
+                <span data-lang="en"> Ierapetra</span>
+              </span>
+            </h2>
+            <p class="body">
+              <span data-lang="el">Η Billy's Pizza ήρθε για να μείνει στον γαστρονομικό χάρτη της Ιεράπετρας. Η καλή πίτσα ξεκινάει από φρέσκα υλικά και τελειώνει με ένα χαμόγελο. Από την κλασική Μαργαρίτα μέχρι τις δικές μας πίτσες — delivery, takeaway ή επιτόπου.</span>
+              <span data-lang="en">Billy's Pizza is here to stay on Ierapetra's food map. Good pizza starts with fresh ingredients and ends with a satisfied smile. From classic Margarita to our own pies — delivery, takeaway, or at the table.</span>
+            </p>
+            <div class="welcome-actions">
+              <a class="btn btn-gold" href="#menu" data-nav="menu">
+                <span data-lang="el">Δείτε τον κατάλογο</span>
+                <span data-lang="en">View the menu</span>
               </a>
+              <a class="btn btn-outline" href="tel:+302842026074">+30 28420 26074</a>
             </div>
-            <div class="cards">
-              <article class="card">
-                <img src="photos/margarita.jpg" alt="Margarita" />
-                <div class="card-body">
-                  <div class="card-row">
-                    <h3>Margarita</h3>
-                    <span class="price">€7.00</span>
-                  </div>
-                  <p class="ings">
+            <p class="claims">
+              <span>
+                <span data-lang="el"><strong>Φρέσκα υλικά</strong>, επιλεγμένα κάθε μέρα</span>
+                <span data-lang="en"><strong>Fresh ingredients</strong>, chosen every day</span>
+              </span>
+              <span>
+                <span data-lang="el"><strong>Ζύμη</strong> από την αρχή, καθημερινά</span>
+                <span data-lang="en"><strong>Dough</strong> from scratch, made daily</span>
+              </span>
+              <span>
+                <span data-lang="el"><strong>Delivery</strong> ή παραλαβή από το κατάστημα</span>
+                <span data-lang="en"><strong>Delivery</strong>, or ready to collect</span>
+              </span>
+            </p>
+            </div>
+            <div class="welcome-shots">
+              <img src="photos/visits.jpg" width="1200" height="900" loading="lazy"
+                   alt="Billy's Pizza, Ierapetra" />
+              <img src="photos/hero.jpg" width="1200" height="900" loading="lazy"
+                   alt="Inside Billy's Pizza" />
+            </div>
+          </div>
+        </section>
+
+        <div class="home-bottom">
+          <div class="bottom-bg" aria-hidden="true">
+            <img src="photos/oven-fire.jpg" width="900" height="600"
+                 loading="lazy" alt="" />
+          </div>
+        <section class="reel" id="reel">
+          <div class="wrap reel-head">
+            <h2 class="heading">
+              <span data-lang="el">Οι <span class="accent">αγαπημένες</span> του Billy's, <span class="accent">όταν πεινάσετε.</span></span>
+              <span data-lang="en">House <span class="accent">favourites</span>, ready when <span class="accent">you are.</span></span>
+            </h2>
+            <a class="btn btn-outline" href="#menu" data-nav="menu">
+              <span data-lang="el">Όλος ο κατάλογος</span>
+              <span data-lang="en">See the full menu</span>
+            </a>
+          </div>
+          <div class="reel-track">
+            <div class="reel-stage">
+              <div class="disc-glow" aria-hidden="true"></div>
+            <article class="reel-item is-active" data-reel-item="0">
+              <div class="reel-disc">
+                  <img src="photos/menu/margarita.webp" width="1000" height="1000" loading="lazy" alt="Margarita" />
+              </div>
+              <div class="callout callout-right">
+                <svg class="lead" viewBox="0 0 88 60" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,52 34,52 62,8 88,8" />
+                </svg>
+                <div class="callout-body">
+                  <h3><span data-lang="el">Μαργαρίτα</span><span data-lang="en">Margarita</span></h3>
+                  <p class="callout-ings">
                     <span data-lang="el">Τυρί, σάλτσα</span>
                     <span data-lang="en">Cheese, sauce</span>
                   </p>
-                  <p class="badge">
-                    <span data-lang="el">Σπέσιαλ του μαγαζιού</span>
-                    <span data-lang="en">House special</span>
-                  </p>
+                  <p class="callout-price">€7.00</p>
+                  <a class="btn btn-outline" href="#pizza">
+                    <span data-lang="el">Στον κατάλογο</span>
+                    <span data-lang="en">See it on the menu</span>
+                  </a>
                 </div>
-              </article>
-              <article class="card">
-                <img src="photos/peinirli.jpg" alt="Peinirli" />
-                <div class="card-body">
-                  <div class="card-row">
-                    <h3>
-                      <span data-lang="el">Πεϊνιρλί</span>
-                      <span data-lang="en">Peinirli</span>
-                    </h3>
-                    <span class="price">€10.00</span>
-                  </div>
-                  <p class="ings">
-                    <span data-lang="el">Τυρί, γαλοπούλα, φρ. ντομάτα, πιπεριά</span>
-                    <span data-lang="en">Cheese, turkey, fresh tomato, pepper</span>
+              </div>
+            </article>
+            <article class="reel-item" data-reel-item="1">
+              <div class="reel-disc">
+                  <img src="photos/menu/simple.webp" width="1000" height="1000" loading="lazy" alt="Simple" />
+              </div>
+              <div class="callout callout-left">
+                <svg class="lead" viewBox="0 0 88 60" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,52 34,52 62,8 88,8" />
+                </svg>
+                <div class="callout-body">
+                  <h3><span data-lang="el">Απλή</span><span data-lang="en">Simple</span></h3>
+                  <p class="callout-ings">
+                    <span data-lang="el">Τυρί, ζαμπόν</span>
+                    <span data-lang="en">Cheese, ham</span>
                   </p>
+                  <p class="callout-price">€8.50</p>
+                  <a class="btn btn-outline" href="#pizza">
+                    <span data-lang="el">Στον κατάλογο</span>
+                    <span data-lang="en">See it on the menu</span>
+                  </a>
                 </div>
-              </article>
-              <article class="card">
-                <img src="photos/special1.jpg" alt="Special" />
-                <div class="card-body">
-                  <div class="card-row">
-                    <h3>
-                      <span data-lang="el">Σπέσιαλ</span>
-                      <span data-lang="en">Special</span>
-                    </h3>
-                    <span class="price">€10.00</span>
-                  </div>
-                  <p class="ings">
+              </div>
+            </article>
+            <article class="reel-item" data-reel-item="2">
+              <div class="reel-disc">
+                  <img src="photos/menu/special.webp" width="1000" height="1000" loading="lazy" alt="Special" />
+              </div>
+              <div class="callout callout-right">
+                <svg class="lead" viewBox="0 0 88 60" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,52 34,52 62,8 88,8" />
+                </svg>
+                <div class="callout-body">
+                  <h3><span data-lang="el">Σπέσιαλ</span><span data-lang="en">Special</span></h3>
+                  <p class="callout-ings">
                     <span data-lang="el">Τυρί, ζαμπόν, μπέικον, σαλάμι, μανιτάρια, πιπεριά</span>
                     <span data-lang="en">Cheese, ham, bacon, salami, mushrooms, peppers</span>
                   </p>
+                  <p class="callout-price">€10.00</p>
+                  <a class="btn btn-outline" href="#pizza">
+                    <span data-lang="el">Στον κατάλογο</span>
+                    <span data-lang="en">See it on the menu</span>
+                  </a>
                 </div>
-              </article>
-              <article class="card">
-                <img src="photos/hamburger1.jpg" alt="Hamburher" />
-                <div class="card-body">
-                  <div class="card-row">
-                    <h3>
-                      <span data-lang="el">Χάμπουργκερ</span>
-                      <span data-lang="en">Hamburger</span>
-                    </h3>
-                    <span class="price">€6.50</span>
-                  </div>
-                  <p class="ings">
-                    <span data-lang="el">Τυρί, μπιφτέκι, φρ. ντομάτα, μαγιονέζα</span>
-                    <span data-lang="en">Cheese, burger, fresh tomato, mayonnaise</span>
+              </div>
+            </article>
+            <article class="reel-item" data-reel-item="3">
+              <div class="reel-disc">
+                  <img src="photos/menu/leggiero.webp" width="1000" height="1000" loading="lazy" alt="Leggiero" />
+              </div>
+              <div class="callout callout-left">
+                <svg class="lead" viewBox="0 0 88 60" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,52 34,52 62,8 88,8" />
+                </svg>
+                <div class="callout-body">
+                  <h3><span data-lang="el">Leggiero</span><span data-lang="en">Leggiero</span></h3>
+                  <p class="callout-ings">
+                    <span data-lang="el">Τυρί, γαλοπούλα, φρ. ντομάτα, πιπεριά</span>
+                    <span data-lang="en">Cheese, turkey, fresh tomato, pepper</span>
                   </p>
+                  <p class="callout-price">€10.00</p>
+                  <a class="btn btn-outline" href="#pizza">
+                    <span data-lang="el">Στον κατάλογο</span>
+                    <span data-lang="en">See it on the menu</span>
+                  </a>
                 </div>
-              </article>
+              </div>
+            </article>
+              <div class="reel-controls">
+                <button type="button" class="hero-arrow reel-arrow" id="reel-prev">
+                  <span class="sr-only"><span data-lang="el">Προηγούμενη</span><span data-lang="en">Previous</span></span>
+                  <svg aria-hidden="true"><use href="#i-left"></use></svg>
+                </button>
+                <div class="reel-ticks" aria-hidden="true">
+                  <span class="reel-tick is-on" data-reel-tick="0"></span>
+                  <span class="reel-tick" data-reel-tick="1"></span>
+                  <span class="reel-tick" data-reel-tick="2"></span>
+                  <span class="reel-tick" data-reel-tick="3"></span>
+                </div>
+                <button type="button" class="hero-arrow reel-arrow" id="reel-next">
+                  <span class="sr-only"><span data-lang="el">Επόμενη</span><span data-lang="en">Next</span></span>
+                  <svg aria-hidden="true"><use href="#i-right"></use></svg>
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="info-row">
-          <div class="wrap info-inner">
-            <div class="info-card">
-              <svg aria-hidden="true"><use href="#i-clock"></use></svg>
+        <section class="closer">
+          <div class="wrap closer-inner">
+            <div>
               <h3><span data-lang="el">Ωράριο</span><span data-lang="en">Hours</span></h3>
               <p>
-                <span data-lang="el">Βράδυ 18:30 – 23:30</span>
-                <span data-lang="en">Evenings 18:30 – 23:30</span>
-                <br />
-                <span data-lang="el">Δευτέρα έως Παρασκευή</span>
-                <span data-lang="en">Monday to Friday</span>
+                <span data-lang="el">Δευτέρα έως Παρασκευή<br />18:30 – 23:30</span>
+                <span data-lang="en">Monday to Friday<br />18:30 – 23:30</span>
               </p>
             </div>
-            <div class="info-card">
-              <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+            <div>
               <h3><span data-lang="el">Διεύθυνση</span><span data-lang="en">Address</span></h3>
               <p>
-                <span data-lang="el">Θεοτοκοπούλου 5, Ιεράπετρα, Κρήτη</span>
-                <span data-lang="en">Theotokopoulou 5, Ierapetra, Crete</span>
+                <span data-lang="el">Θεοτοκοπούλου 5<br />Ιεράπετρα, Κρήτη</span>
+                <span data-lang="en">Theotokopoulou 5<br />Ierapetra, Crete</span>
               </p>
             </div>
-            <div class="info-card">
-              <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+            <div>
               <h3><span data-lang="el">Τηλέφωνο</span><span data-lang="en">Phone</span></h3>
-              <p>
-                <a href="tel:+302842026074">+30 28420 26074</a>
-                <br />
-                <span data-lang="el">Στο κατάστημα και delivery</span>
-                <span data-lang="en">Dine in and delivery</span>
-              </p>
+              <p><a href="tel:+302842026074">+30 28420 26074</a></p>
             </div>
           </div>
         </section>
+        </div>
       </section>
 
       <section class="page" id="menu">
         <div class="page-hero">
           <h1><span data-lang="el">Κατάλογος</span><span data-lang="en">Menu</span></h1>
-          <p>
-            <span data-lang="el">Pizza · Καλτσόνε · Πεϊνιρλί · Ψωμάκια φούρνου · Σαλάτες · Ποτά</span>
-            <span data-lang="en">Pizza · Calzone · Peinirli · Baked breads · Salads · Drinks</span>
-          </p>
         </div>
         <div class="wrap wrap-narrow menu-page">
+          <div class="veg-rail veg-left" aria-hidden="true">
+            <img data-veg src="photos/veg/tomato.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/garlic.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/basil.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/cheese.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/tomato.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/basil.webp?v=2" alt="" />
+          </div>
+          <div class="veg-rail veg-right" aria-hidden="true">
+            <img data-veg src="photos/veg/basil.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/cheese.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/tomato.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/basil.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/garlic.webp?v=2" alt="" />
+            <img data-veg src="photos/veg/tomato.webp?v=2" alt="" />
+          </div>
           <nav class="cat-nav" aria-label="Menu">
             <ul>
               <li>
@@ -501,6 +530,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-1.webp" width="220" height="220" loading="lazy" alt="Margarita" />
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -512,6 +542,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-2.webp" width="220" height="220" loading="lazy" alt="Simple" />
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -523,6 +554,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-3.webp" width="220" height="220" loading="lazy" alt="Special" />
                 <span class="menu-num">3.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -534,6 +566,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-4.webp" width="220" height="220" loading="lazy" alt="Philadelphia" />
                 <span class="menu-num">4.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -545,6 +578,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">5.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -556,6 +590,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-6.webp" width="220" height="220" loading="lazy" alt="Greek" />
                 <span class="menu-num">6.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -567,6 +602,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">7.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -578,6 +614,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">8.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -589,6 +626,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">9.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -600,6 +638,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">10.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -611,6 +650,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">11.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -622,6 +662,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/pizza-12.webp" width="220" height="220" loading="lazy" alt="Leggiero" />
                 <span class="menu-num">12.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -633,6 +674,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">13.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -644,6 +686,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">14.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -662,6 +705,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -673,6 +717,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -691,6 +736,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -702,6 +748,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -713,6 +760,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">3.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -735,6 +783,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -746,6 +795,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <img class="menu-thumb" src="photos/menu/thumbs/baked-2.webp" width="220" height="220" loading="lazy" alt="Hamburger" />
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -757,6 +807,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">3.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -768,6 +819,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">4.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -779,6 +831,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">5.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -790,6 +843,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">6.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -812,6 +866,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -823,6 +878,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -841,6 +897,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -852,6 +909,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -863,6 +921,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">3.</span>
                 <div class="menu-item-body">
                   <div class="menu-name-row">
@@ -881,6 +940,7 @@
             <hr class="rule" />
             <ol class="menu-list">
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">1.</span>
                 <div class="menu-item-body">
                   <h3><span data-lang="el">Αναψυκτικά</span><span data-lang="en">Refreshments</span></h3>
@@ -899,6 +959,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">2.</span>
                 <div class="menu-item-body">
                   <h3><span data-lang="el">Νερό</span><span data-lang="en">Water</span></h3>
@@ -917,6 +978,7 @@
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">3.</span>
                 <div class="menu-item-body">
                   <h3><span data-lang="el">Μπύρες</span><span data-lang="en">Beers</span></h3>
@@ -924,17 +986,18 @@
                     <li>
                       <span>330ml</span>
                       <span class="dots" aria-hidden="true"></span>
-                      <span class="price">€2.00</span>
+                      <span class="price">€2.50</span>
                     </li>
                     <li>
-                      <span>500ml</span>
+                      <span>0.5L</span>
                       <span class="dots" aria-hidden="true"></span>
-                      <span class="price">€3.50</span>
+                      <span class="price">€4.00</span>
                     </li>
                   </ul>
                 </div>
               </li>
               <li class="menu-item">
+                <span class="menu-thumb menu-thumb-empty" aria-hidden="true"></span>
                 <span class="menu-num">4.</span>
                 <div class="menu-item-body">
                   <h3><span data-lang="el">Κρασί</span><span data-lang="en">Wine</span></h3>
@@ -961,20 +1024,17 @@
         </div> 
       </section>
       <section class="page" id="visit">
+        <div class="visit-bg" aria-hidden="true">
+          <img src="photos/image.png" width="967" height="1024" loading="lazy" alt="" />
+        </div>
         <div class="page-hero">
           <h1><span data-lang="el">Βρείτε μας</span><span data-lang="en">Find us</span></h1>
-          <p>
-            <span data-lang="el">Βρείτε μας · Καλέστε μας · Ελάτε</span>
-            <span data-lang="en">Find us · Call us · Come by</span>
-          </p>
         </div>
-        <div class="wrap wrap-narrow visit-intro">
-          <p class="eyebrow">
-            Billy's Pizza · <span data-lang="el">Ιεράπετρα</span><span data-lang="en">Ierapetra</span>
-          </p>
+        <div class="wrap visit-intro">
+          <div class="visit-main">
           <h2 class="heading">
-            <span data-lang="el">Περάστε το βράδυ, ή καλέστε και σας το φέρνουμε.</span>
-            <span data-lang="en">Come by in the evening, or call and we will bring it to you.</span>
+            <span data-lang="el">Περάστε το βράδυ, ή καλέστε και <span class="accent">σας το φέρνουμε.</span></span>
+            <span data-lang="en">Come by in the evening, or call and <span class="accent">we will bring it to you.</span></span>
           </h2>
           <div class="detail-grid">
             <div class="detail">
@@ -1003,10 +1063,8 @@
               <div>
                 <h3><span data-lang="el">Ωράριο</span><span data-lang="en">Hours</span></h3>
                 <p>
-                  <span data-lang="el">Δευτέρα – Παρασκευή: 18:30 – 23:30
-Σάββατο & Κυριακή: Κλειστά</span>
-                  <span data-lang="en">Monday – Friday: 18:30 – 23:30
-Saturday & Sunday: Closed</span>
+                  <span data-lang="el">Δευτέρα – Παρασκευή: 18:30 – 23:30<br />Σάββατο &amp; Κυριακή: Κλειστά</span>
+                  <span data-lang="en">Monday – Friday: 18:30 – 23:30<br />Saturday &amp; Sunday: Closed</span>
                 </p>
               </div>
             </div>
@@ -1033,12 +1091,12 @@ Saturday & Sunday: Closed</span>
               </div>
             </div>
           </div>
+          </div>
         </div>
         <section class="map-sec">
           <div class="wrap">
             <div class="map-head">
               <h2>
-                <span class="accent">· </span>
                 <span data-lang="el">Η Billy's Pizza στον χάρτη</span>
                 <span data-lang="en">Billy's Pizza on the map</span>
               </h2>
@@ -1108,8 +1166,8 @@ Saturday & Sunday: Closed</span>
       <div class="call-bar-inner">
         <a class="btn btn-gold" href="tel:+302842026074">
           <svg aria-hidden="true"><use href="#i-phone"></use></svg>
-          <span data-lang="el">Κλήση στη Billy's Pizza</span>
-          <span data-lang="en">Call Billy's Pizza</span>
+          <span data-lang="el">Καλέστε μας</span>
+          <span data-lang="en">Call us</span>
         </a>
         <a
           class="btn btn-outline"
@@ -1124,6 +1182,6 @@ Saturday & Sunday: Closed</span>
       </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=11"></script>
   </body>
 </html>

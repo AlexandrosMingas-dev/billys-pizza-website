@@ -2,3 +2,10 @@
 *.log
 .vscode/
 .idea/
+
+# Source images the site never loads — kept locally, not in the repo
+photos/wolt menu/
+
+# Local agent tooling, not part of the website
+.claude/
+skills-lock.json

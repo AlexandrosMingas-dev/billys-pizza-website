@@ -5,6 +5,10 @@
   var PAGES = ["home", "menu", "visit"];
   var MENU_CATS = ["pizza", "calzone", "peinirli", "baked", "breads", "salads", "drinks"];
 
+  /* The shop keeps one schedule: Monday to Friday, 18:30 to 23:30, Greek time. */
+  var OPEN_MIN = 18 * 60 + 30;
+  var CLOSE_MIN = 23 * 60 + 30;
+
   var currentLang = "el";
   try {
     currentLang = localStorage.getItem(LANG_KEY) === "en" ? "en" : "el";
@@ -26,6 +30,84 @@
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
   }
+
+  /* ---------------------------------------------------------- open state --
+     Read against Athens, not the visitor's clock: someone checking from
+     another timezone still wants to know whether the oven is on now. */
+
+  function athensNow() {
+    var parts = {};
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Athens",
+      weekday: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    })
+      .formatToParts(new Date())
+      .forEach(function (p) {
+        parts[p.type] = p.value;
+      });
+    var days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    return {
+      day: days[parts.weekday],
+      mins: parseInt(parts.hour, 10) * 60 + parseInt(parts.minute, 10),
+    };
+  }
+
+  function statusCopy() {
+    var now = athensNow();
+    var weekday = now.day >= 1 && now.day <= 5;
+
+    if (weekday && now.mins >= OPEN_MIN && now.mins < CLOSE_MIN) {
+      return { open: true, el: "Ανοιχτά τώρα", en: "Open now" };
+    }
+    if (weekday && now.mins < OPEN_MIN) {
+      return { open: false, el: "Ανοίγουμε στις 18:30", en: "Opens at 18:30" };
+    }
+    /* Friday night, Saturday and Sunday all point at Monday */
+    var toMonday = now.day === 5 || now.day === 6 || now.day === 0;
+    if (toMonday) {
+      return {
+        open: false,
+        el: "Κλειστά. Δευτέρα στις 18:30",
+        en: "Closed. Back Monday at 18:30",
+      };
+    }
+    return {
+      open: false,
+      el: "Κλειστά. Αύριο στις 18:30",
+      en: "Closed. Back tomorrow at 18:30",
+    };
+  }
+
+  function renderStatus() {
+    var box = document.getElementById("status");
+    if (!box) return;
+    var copy;
+    try {
+      copy = statusCopy();
+    } catch (e) {
+      box.hidden = true; /* no Intl time zones: say nothing rather than guess */
+      return;
+    }
+    var text = box.querySelector(".status-text");
+    text.textContent = "";
+
+    var el = document.createElement("span");
+    el.setAttribute("data-lang", "el");
+    el.textContent = copy.el;
+    var en = document.createElement("span");
+    en.setAttribute("data-lang", "en");
+    en.textContent = copy.en;
+
+    text.appendChild(el);
+    text.appendChild(en);
+    box.classList.toggle("is-open", copy.open);
+    box.hidden = false;
+  }
+
+  /* ------------------------------------------------------------ routing -- */
 
   function parseHash() {
     var hash = (window.location.hash || "#home").replace(/^#/, "");
@@ -74,6 +156,8 @@
     });
   }
 
+  /* ------------------------------------------------------------- drawer -- */
+
   var drawer = document.getElementById("drawer");
   var overlay = document.getElementById("overlay");
   var menuBtn = document.getElementById("menu-btn");
@@ -101,75 +185,120 @@
     else openDrawer();
   }
 
-  function initSlider(root) {
-    if (!root) return;
-    var slides = root.querySelectorAll(":scope > .slide");
-    var captions = root.querySelectorAll(".slide-caption");
-    var dots = root.querySelectorAll(".slider-dots button");
-    var prev = root.querySelector(".slider-prev");
-    var next = root.querySelector(".slider-next");
-    var index = 0;
-    var timer;
+  /* ------------------------------------------------------------ hero --
+     Three slides on a timer, with arrows and dots for anyone who would
+     rather drive. The timer stops while a pointer or the keyboard is in
+     the hero, so it never pulls the words away mid-read. */
 
-    function goTo(n) {
-      if (!slides.length) return;
+  function initHeroSlider() {
+    var hero = document.getElementById("hero");
+    if (!hero) return;
+    var slides = hero.querySelectorAll("[data-slide]");
+    var shots = hero.querySelectorAll("[data-shot]");
+    var dots = hero.querySelectorAll("[data-dot]");
+    if (slides.length < 2) return;
+
+    var reduced =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var index = 0;
+    var timer = null;
+
+    function show(n) {
       index = (n + slides.length) % slides.length;
-      slides.forEach(function (slide, i) {
-        var on = i === index;
-        slide.classList.toggle("is-active", on);
-        slide.setAttribute("aria-hidden", on ? "false" : "true");
-      });
-      captions.forEach(function (caption, i) {
-        caption.classList.toggle("is-active", i === index);
+      [slides, shots, dots].forEach(function (set) {
+        set.forEach(function (el, i) {
+          el.classList.toggle("is-active", i === index);
+        });
       });
       dots.forEach(function (dot, i) {
-        var on = i === index;
-        dot.classList.toggle("is-active", on);
-        if (on) dot.setAttribute("aria-current", "true");
+        if (i === index) dot.setAttribute("aria-current", "true");
         else dot.removeAttribute("aria-current");
       });
     }
 
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
     function start() {
       stop();
-      timer = setInterval(function () {
-        goTo(index + 1);
-      }, 6000);
+      if (reduced) return; /* no unattended movement */
+      timer = setInterval(function () { show(index + 1); }, 4000);
     }
 
-    function stop() {
-      if (timer) clearInterval(timer);
-    }
+    function go(n) { show(n); start(); }
 
-    if (prev) {
-      prev.addEventListener("click", function () {
-        goTo(index - 1);
-        start();
-      });
-    }
-    if (next) {
-      next.addEventListener("click", function () {
-        goTo(index + 1);
-        start();
-      });
-    }
     dots.forEach(function (dot, i) {
-      dot.addEventListener("click", function () {
-        goTo(i);
-        start();
-      });
+      dot.addEventListener("click", function () { go(i); });
     });
-    root.addEventListener("mouseenter", stop);
-    root.addEventListener("mouseleave", start);
-    goTo(0);
+    var prev = document.getElementById("hero-prev");
+    var next = document.getElementById("hero-next");
+    if (prev) prev.addEventListener("click", function () { go(index - 1); });
+    if (next) next.addEventListener("click", function () { go(index + 1); });
+
+    /* No pause on hover: the hero is the whole screen, so the pointer rests
+       inside it almost always and the slider would simply never advance.
+       Keyboard focus still pauses, since that means someone is using it. */
+    hero.addEventListener("focusin", stop);
+    hero.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop(); else start();
+    });
+
+    show(0);
     start();
+  }
+
+  /* -------------------------------------------------------------- reel --
+     Driven by its arrows alone. It used to advance on scroll position, which
+     meant you could not look at one pizza without the page taking it away. */
+
+  function initReel() {
+    var items = document.querySelectorAll("[data-reel-item]");
+    var ticks = document.querySelectorAll("[data-reel-tick]");
+    if (items.length < 2) return;
+
+    var active = 0;
+
+    function show(n) {
+      active = (n + items.length) % items.length;
+      items.forEach(function (item, i) {
+        item.classList.toggle("is-active", i === active);
+      });
+      ticks.forEach(function (tick, i) {
+        tick.classList.toggle("is-on", i === active);
+      });
+    }
+
+    var prev = document.getElementById("reel-prev");
+    var next = document.getElementById("reel-next");
+    if (prev) prev.addEventListener("click", function () { show(active - 1); });
+    if (next) next.addEventListener("click", function () { show(active + 1); });
+
+    ticks.forEach(function (tick, i) {
+      tick.addEventListener("click", function () { show(i); });
+    });
+
+    show(0);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     setLang(currentLang);
     applyHash(true);
-    initSlider(document.getElementById("slider"));
-    initSlider(document.getElementById("welcome-slider"));
+    renderStatus();
+    initHeroSlider();
+
+    /* the menu's vegetables are cut from the shop's own menu-cover photo; any
+       that is not on disk yet simply steps out of the way */
+    document.querySelectorAll("[data-veg]").forEach(function (img) {
+      img.addEventListener("error", function () {
+        img.remove();
+      });
+    });
+    initReel();
+
+    /* the line goes stale on its own, so keep it honest while the tab is open */
+    setInterval(renderStatus, 60000);
 
     document.querySelectorAll("[data-lang-btn]").forEach(function (btn) {
       btn.addEventListener("click", function (e) {
@@ -199,7 +328,6 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeDrawer();
     });
-
   });
 
   window.addEventListener("hashchange", function () {
